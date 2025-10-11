@@ -1,7 +1,6 @@
 spring:
   application:
     name:  ms-naissance;
-
-logging:
-  level:
-    tech.mouctar: trace
+  jpa:
+    hibernate:
+      ddl-auto: validate

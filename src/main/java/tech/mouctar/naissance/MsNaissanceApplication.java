@@ -10,9 +10,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 @SpringBootApplication (
 		exclude = {
-				DataSourceAutoConfiguration.class,
-				DataSourceTransactionManagerAutoConfiguration.class,
-				HibernateJpaAutoConfiguration.class,
+			//	DataSourceAutoConfiguration.class,
+			//	DataSourceTransactionManagerAutoConfiguration.class,
+			//	HibernateJpaAutoConfiguration.class,
 				SecurityAutoConfiguration.class,
 				ManagementWebSecurityAutoConfiguration.class
 

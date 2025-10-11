@@ -1,23 +1,20 @@
 package tech.mouctar.naissance.profiles;
 
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("profiles")
 public class ProfilesController {
-
-    Logger log = LoggerFactory.getLogger(ProfilesController.class);
-
+    Logger logger = LoggerFactory.getLogger(ProfilesController.class);
+    private final ProfilesService profilesService;
+    public ProfilesController(ProfilesService profilesService) {
+        this.profilesService = profilesService;
+    }
     @PostMapping
-    public void create(Profiles compte) {
-        log.info("Create profile: " + compte.getFirstName() + " " + compte.getLastName());
-        log.trace("Create profile: " + compte.getEmail());
-        log.warn("Create profile: " + compte.getEmail());
-
+    public void create(@RequestBody Profiles compte) {
+        logger.info("Création du compte " + compte.getEmail());
+        profilesService.createProfile(compte);
     }
 }
