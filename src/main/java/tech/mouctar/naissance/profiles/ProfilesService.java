@@ -4,6 +4,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tech.mouctar.naissance.shared.entities.Addresses;
+import tech.mouctar.naissance.shared.services.AddressesService;
 import tech.mouctar.naissance.shared.services.ValisationsService;
 
 import java.util.List;
@@ -15,10 +17,15 @@ import java.util.Optional;
 public class ProfilesService {
     private final ProfilesRepository profilesRepository;
     private final ValisationsService valisationsService;
+    private final AddressesService addressesService;
 
 
     public void createProfile(Profiles profile) {
         log.info("Création du nouveau compte {} ", profile.getEmail());
+        if(addressesService != null) {
+            Addresses addresses = addressesService.createAddresses(profile.getAddresses());
+            profile.setAddresses(addresses);
+        }
         this.valisationsService.validateEmail(profile.getEmail());
         this.valisationsService.validatePhone(profile.getPhone());
         this.profilesRepository.save(profile);
