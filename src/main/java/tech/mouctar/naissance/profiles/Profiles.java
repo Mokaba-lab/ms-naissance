@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tech.mouctar.naissance.shared.entities.Addresses;
+import tech.mouctar.naissance.shared.entities.Cityhalls;
+import tech.mouctar.naissance.shared.entities.Companies;
 
 @Getter
 @Setter
@@ -30,4 +32,10 @@ public class Profiles {
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH})
     private Addresses addresses;
+
+    @ManyToOne()
+    private Cityhalls cityhalls;
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH})
+    private Companies companies;
 }

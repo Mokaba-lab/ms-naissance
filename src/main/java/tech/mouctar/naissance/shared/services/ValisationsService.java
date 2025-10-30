@@ -17,7 +17,7 @@ public class ValisationsService {
         if (phone == null) {
             throw new RuntimeException("Le Phone est obligatoire");
         }
-        if (phone.length() != 15) {
+        if (phone.length() != 17) {
             throw new RuntimeException("Le Phone est invalide");
         }
     }
