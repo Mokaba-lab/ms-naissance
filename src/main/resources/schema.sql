@@ -1,5 +1,3 @@
-
-
 drop table if exists companies;
 drop table if exists addresses;
 drop table if exists cityhalls;
